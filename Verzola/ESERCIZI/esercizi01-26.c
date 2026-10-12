@@ -100,4 +100,5 @@ int main (){
     printf("prodotto: %lf\n", num3 * num5);
     printf("quoziente: %lf\n", num3 / num5);
     printf("\n");
+    //miao
 }
