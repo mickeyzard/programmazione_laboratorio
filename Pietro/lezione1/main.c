@@ -9,6 +9,7 @@ int main () {
 
 
 
+    // negro
     //es 7
     int num = INT_MAX;
     printf("int_max= %d\n", num);
