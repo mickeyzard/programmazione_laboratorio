@@ -3,7 +3,7 @@
 #include <limits.h>
 #include <float.h>
 int main (){
-
+    
     //es1
     printf("Ciao Mondo\n");
     printf("\n");
@@ -59,7 +59,7 @@ int main (){
 
 
     //es9
-    double num3;
+    double num3 = 0;
     /*
     printf("Inserisci un numero intero: ");
     scanf("%d", &num);
@@ -72,7 +72,7 @@ int main (){
 
 
     //es10
-     int num4;
+     int num4 = 0;;
     /*
     printf("operazioni con numeri interi\n");
     printf("Inserisci primo numero: ");
@@ -89,7 +89,7 @@ int main (){
     
     
     //es11
-    double num5;
+    double num5 = 0;;
     printf("operazioni con numeri double\n");
     printf("Inserisci primo numero:");
     scanf("%lf", &num3);
