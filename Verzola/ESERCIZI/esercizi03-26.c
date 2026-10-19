@@ -265,6 +265,5 @@ int main(void){
 	printf("Caffe: %d\n", caffe);
 	printf("Ombrello: %d\n", ombrello);
 
-return 0;
 	return 0;
 }
