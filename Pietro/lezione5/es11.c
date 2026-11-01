@@ -1,26 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 9
+#define N 5
 
 
 int main() {
-    //int v[N];
     int temp;
     bool scambio = true;
-    
-    int v[N] = {9,8,7,6,5,4,3,2,1};
-    while (scambio == true)
-        scambio=false;
+    int v[N] = {9, 6, 4, 8, 2};
+	
+	printf("Pre bubble sort: ");
+	for(int i = 0; i < N; i++){
+        printf("%d ",v[i]);
+
+    }
+    while (scambio == true){
+        scambio =false;
         for (int i=0; i<=N-2; i++ )
             if (v[i]>v[i+1]){
-                temp = v[i+1];
-                v[i+1] = v[i];
-                v[i] = temp;
-                scambio=true;
+                temp = v[i];
+                v[i] = v[i+1];
+                v[i+1] = temp;
+                scambio =true;
             }
+	}
+	printf("\n");
+	printf("Post bubble sort: ");
     for(int i = 0; i < N; i++){
         printf("%d ",v[i]);
 
     }
+	printf("\n");
     return 0;
 }
