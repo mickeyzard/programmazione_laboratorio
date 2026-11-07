@@ -184,12 +184,29 @@ int main(){
 
 /*
 //es6 banca con menu di selezione
+#define DEPOSITO_DEFAULT 200
+double read_n(void);
+double deposito_denaro(void);
+double prelievo_denaro(double deposito);
+double interesse_conto(double deposito);
+void menu(void);
+
+
+////////////////////////////////////
+int main(){
+	menu();
+
+	return 0;
+}
+/////////////////////////////////////
+
+
 double read_n(void){
 	double n;
 	scanf("%lf", &n);
 	return n;
 }
-double deposito_denaro(){	
+double deposito_denaro(void){	
 	double aggiunta = 0;
 	printf("Quanto denaro vuoi depositare?: \n");
 	double n = read_n();
@@ -226,9 +243,9 @@ double interesse_conto(double deposito){
 	return saldo;
 
 }
-int main(){
+void menu(){
 	int scelta, n1, n2;
-	double aggiunta, prelievo, interesse, saldo, deposito = 200;
+	double aggiunta, prelievo, interesse, saldo, deposito = DEPOSITO_DEFAULT;
 	bool selezione;
 	bool loop = true;
 	while(loop){
@@ -271,8 +288,6 @@ int main(){
 				printf("Non corrisponde a nessuna operazione, riprova.\n");
 		}
 	}
-
-	return 0;
 }
 */
 
