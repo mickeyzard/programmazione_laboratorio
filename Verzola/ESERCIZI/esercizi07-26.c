@@ -182,14 +182,31 @@ int main(){
 }
 */
 
-
+/*
 //es6 banca con menu di selezione
+#define DEPOSITO_DEFAULT 200
+double read_n(void);
+double deposito_denaro(void);
+double prelievo_denaro(double deposito);
+double interesse_conto(double deposito);
+void menu(void);
+
+
+////////////////////////////////////
+int main(){
+	menu();
+
+	return 0;
+}
+/////////////////////////////////////
+
+
 double read_n(void){
 	double n;
 	scanf("%lf", &n);
 	return n;
 }
-double deposito_denaro(){	
+double deposito_denaro(void){	
 	double aggiunta = 0;
 	printf("Quanto denaro vuoi depositare?: \n");
 	double n = read_n();
@@ -226,9 +243,9 @@ double interesse_conto(double deposito){
 	return saldo;
 
 }
-int main(){
+void menu(){
 	int scelta, n1, n2;
-	double aggiunta, prelievo, interesse, saldo, deposito = 200;
+	double aggiunta, prelievo, interesse, saldo, deposito = DEPOSITO_DEFAULT;
 	bool selezione;
 	bool loop = true;
 	while(loop){
@@ -271,6 +288,134 @@ int main(){
 				printf("Non corrisponde a nessuna operazione, riprova.\n");
 		}
 	}
+}
+*/
+
+//es7 correggi
+/*
+double avg(double n1, double n2){
+    return (n1 + n2)/2;
+}
+
+int main(){
+    double n1, n2;
+    double result = 0;
+
+    printf("Inserisci i due numeri separati da spazio: ");
+    scanf("%lf %lf", &n1, &n2);
+
+    result = avg(n1, n2);
+    printf("avg(%lf, %lf)=%lf\n", n1, n2, result);
+
+    return 0;
+}
+*/
+
+//es8-9 diagonale
+/*
+#define M 3
+#define N 3
+
+	int main(){
+	int matrix[M][N] = {
+		{10, 20, 30},
+		{11, 21, 31},
+		{12, 22, 32}
+	};
+
+	int i, j;
+	int sum = 0;
+	*/
+
+	/*
+	for (i = 0; i < M; i++){
+		for (j = 0; j < N; j++){
+			if (i == j){
+				sum += matrix[i][j];
+			}
+	 	}
+	}
+	*/
+	/*
+	for (i = 0; i < M; i++) {
+    	sum += matrix[i][i];
+	}
+	printf("La somma: %d\n", sum);
+
+	 return 0;
+
+}
+*/
+
+//es10 max e min numeri in una matrice
+/*
+#define M 3
+#define N 3
+
+	int main(){
+	int matrix[M][N] = {
+		{4, 98, 22},
+		{35, 1, 43},
+		{86, 67, 72}
+	};
+	int max = 0, min = 100;
+	int colonna_max, riga_max, colonna_min, riga_min ;
+	int i, j;
+	int sum = 0;
+	for (i = 0; i < M; i++){
+		for (j = 0; j < N; j++){
+			if(matrix[i][j] > max){
+				max = matrix[i][j];
+				riga_max = i;
+				colonna_max = j;
+			}
+			if(matrix[i][j] < min){
+				min = matrix[i][j];
+				riga_min = i;
+				colonna_min = j;
+			}
+	 	}
+	}
+
+	printf("Il numero massimo della matrice è: %d\nRiga %d - Colonna %d\n", max, riga_max, colonna_max);
+	printf("Il numero minimo della matrice è: %d\nRiga %d - Colonna %d\n", min, riga_min, colonna_min);
 
 	return 0;
+
 }
+*/
+
+//es11
+#define N 3
+
+int main(){
+	
+	int matrix[N][N] = {
+        {1, 3, 3},
+        {2, 4, 5},
+        {3, 5, 6}
+    };
+	int i, j;
+	int simmetrica = 1;
+
+	for (i = 0; i < N; i++){
+		for (j = 0; j < N; j++){
+			if(matrix[i][j] != matrix[j][i]){
+				simmetrica = 0;
+			}
+				
+		}
+		
+	}
+
+	if(simmetrica == 1){
+		printf("La matrice è simmetrica\n");
+	} else {
+		printf("La matrice non è simmetrica\n");
+	}
+	
+	return 0;	
+}
+
+
+
