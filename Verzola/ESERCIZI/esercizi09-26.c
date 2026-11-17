@@ -229,6 +229,7 @@ int main(void){
 */
 
 //es6 Funzione clean parametrica
+/*
 void clean (char *s, char *t, char c){
 int i = 0, j = 0;
 	while (s[i] != '\n' && s[i] != '\0'){
@@ -262,4 +263,56 @@ int main(void){
 
     return 0;
 }
+*/
 
+//es7 funzione clean parametrica, con più caratteri.
+
+void clean(char *s, char *t, char *u) {
+    int i = 0, j = 0;
+
+    while (s[i] != '\0') {
+
+        int trovato = 0;
+        int k = 0;
+
+        while (u[k] != '\0') {
+            if (s[i] == u[k]) {
+                trovato = 1;
+            }
+            k++;
+        }
+		if (trovato == 0){
+			t[j] = s[i];
+			j++;
+		}
+
+        i++;
+    }
+
+    t[j] = '\0';
+}
+
+int main(void){
+	char str1[BUFSIZ];
+	char str3[BUFSIZ];
+	printf("Inserisci una stringa: ");
+	if( fgets (str1, BUFSIZ, stdin) == NULL ){
+		printf("Errore in lettura!\n");
+		return -1;
+	}
+	
+	printf("Inserisci carattere: ");
+	if( fgets (str3, BUFSIZ, stdin) == NULL ){
+		printf("Errore in lettura!\n");
+		return -1;
+	}
+	str3[strcspn(str3, "\n")] = '\0';
+
+	char str2[sizeof(str1)];
+	clean(str1, str2, str3);
+
+	printf("la stringa dopo la funzione clean: %s\n" , str2);
+
+
+    return 0;
+}
