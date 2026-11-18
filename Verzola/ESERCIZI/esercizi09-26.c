@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 //es1 funzione reverse
@@ -266,7 +267,7 @@ int main(void){
 */
 
 //es7 funzione clean parametrica, con più caratteri.
-
+/*
 void clean(char *s, char *t, char *u) {
     int i = 0, j = 0;
 
@@ -315,4 +316,200 @@ int main(void){
 
 
     return 0;
+}
+*/
+
+//es8 ordinamento delle stringhe per lunghezza
+/*
+int lunghezza (char *s){
+	int i = 0;
+	while (s[i] != '\0'){
+		i++;
+	}
+	return i;
+
+}
+
+void ordina (char **s, int n){
+	bool scambio = true;
+	char *temp;
+	while (scambio == true){
+	   scambio = false;
+        for (int i=0; i<=n-2; i++ ){
+            if (lunghezza(s[i])>lunghezza(s[i+1])){
+                temp = s[i];
+                s[i] = s[i+1];
+                s[i+1] = temp;
+                scambio =true;
+            }
+		}
+	}
+
+
+}
+
+int main(void){
+	char str1[BUFSIZ];
+	char *c[5];
+	int i = 0;
+	for (i = 0; i < 5; i++){
+	c[i] = malloc(BUFSIZ * sizeof(char));
+	if(c[i]==NULL){
+		printf("errore allocazione di memoria\n");
+		return -1;
+
+	}
+	printf("Inserisci una stringa: ");
+		if( fgets (c[i], BUFSIZ, stdin) == NULL ){
+			printf("Errore in lettura!\n");
+			return -1;
+
+		}
+	c[i][strcspn(c[i], "\n")] = '\0';
+	
+	}
+
+	//for (i = 0; i < 5; i++) {
+    //	printf("Stringa: %s - Lunghezza: %d\n", c[i], lunghezza(c[i]));
+    //}
+
+	ordina(c, 5);
+	
+	for (i = 0; i < 5; i++){
+		printf("stringa ordinata %d: %s\n", i+1 ,c[i]);
+	
+	}
+	for (i = 0; i < 5; i++){
+		free(c[i]);
+	}
+
+	
+
+    return 0;
+}
+*/
+
+//es9 ordinamento lessicografico delle stringhe
+/*
+int lex(char *s, char *t){
+	int i = 0;
+	while(s[i] != '\0' && t[i] != '\0'){
+		if (s[i] != t[i]){
+			if(s[i] < t[i]){
+			return 1;
+			} else {
+				return -1;			
+			}
+			
+		}
+		i++;                               
+	}
+	
+	if(s[i]== '\0' && t[i]== '\0'){
+		return 0;
+	}
+	if(s[i] == '\0'){
+		return 1;
+	} else {
+		return -1;
+	}
+
+}
+
+
+void ordina (char **s, int n){
+	bool scambio = true;
+	char *temp;
+	while (scambio == true){
+	   scambio = false;
+        for (int i=0; i<=n-2; i++ ){
+            if (lex(s[i], s[i+1]) < 0){
+                temp = s[i];
+                s[i] = s[i+1];
+                s[i+1] = temp;
+                scambio =true;
+            } 
+		}
+	}
+
+
+}
+
+int main(void){
+	char *c[5];
+
+	int i = 0;
+	for (i = 0; i < 5; i++){
+	c[i] = malloc(BUFSIZ * sizeof(char));
+	if(c[i]==NULL){
+		printf("errore allocazione di memoria\n");
+		return -1;
+
+	}
+	printf("Inserisci una stringa: ");
+		if( fgets (c[i], BUFSIZ, stdin) == NULL ){
+			printf("Errore in lettura!\n");
+			return -1;
+
+		}
+	c[i][strcspn(c[i], "\n")] = '\0';
+	
+	}
+
+	//for (i = 0; i < 5; i++) {
+    //	printf("Stringa: %s - Lunghezza: %d\n", c[i], lunghezza(c[i]));
+    //}
+
+	ordina(c, 5);
+	
+	for (i = 0; i < 5; i++){
+		printf("stringa %d ordinata lessicograficamente: %s\n", i+1 ,c[i]);
+	
+	}
+	for (i = 0; i < 5; i++){
+		free(c[i]);
+	}
+
+	
+
+    return 0;
+}
+*/
+
+//es10 trova l’errore1.
+/*
+void reverseEasy(char *s, char *srev) {
+    int length, c;
+    char *end = s;
+    length = strlen(s);
+
+    for (c = 0; c < length - 1; c++)
+        end++;
+
+    for (c = 0; c < length; c++) {
+        *srev = *end;
+        srev++;
+        end--;
+    }
+	
+    *srev = '\0';
+}
+*/
+
+//es11
+
+void reverse(char *s, char *t) {
+    int i = 0, j = 0;
+    int cont = 0;
+
+    while (*(s+i) != '\0')
+        i++;
+
+    while (i > 0) {
+		t[j] = s[i-1];
+        j++;
+        i--;
+        cont++;
+    }
+	t[j] = '\0';
 }
