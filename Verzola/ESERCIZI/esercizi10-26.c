@@ -331,6 +331,7 @@ int main(){
 }
 */
 //es5 leggere una frase e creare una struttura dati per contenerla.
+/*
 #define N 20
 int main(){
 	char *c[N];
@@ -361,5 +362,131 @@ int main(){
 	}
 	return 0;
 
+
+}
+*/
+
+//es 6 scrivere il contenuto di un array su file.
+/*
+int main(int argc, char *argv[]){
+	FILE * file_w;
+	char dst[BUFSIZ];
+	int n;
+	double *v;
+	if(argc < 2){
+		fprintf(stderr, "inserire nome del file\n");
+		return -1;
+	}
+	printf("quanti valori vuoi inserire: ");
+	scanf("%d", &n);
+	v = malloc(n * sizeof(double));
+	if (v == NULL){
+		fprintf(stderr, "errore allocazione memoria\n");
+		return -1;
+	}
+	for (int i = 0; i < n; i++){
+		printf("inserisci valore %d: ", i+1);
+		scanf("%lf", &v[i]);
+	
+	}
+	file_w = fopen(argv[1], "w");
+	if (file_w == NULL){
+		fprintf(stderr, "errore apertura file\n");
+		free(v);
+		return -1;
+	}
+	for (int i = 0; i < n; i++) {
+    	fprintf(file_w, "%lf\n", v[i]);
+	}
+
+	fclose(file_w);
+	free(v);
+
+
+	return 0;	
+}
+*/
+
+//es 7 leggere il contenuto di un array da file 
+/*
+#define N 100
+int main(int argc, char *argv[]){
+	
+	FILE * file_r;
+	int n = 0;
+	double v[N], x;
+	if(argc < 2){
+		fprintf(stderr, "inserire nome del file\n");
+		return -1;
+	}
+	file_r = fopen(argv[1], "r");
+	if (file_r == NULL){
+		fprintf(stderr, "errore apertura file\n");
+		return -1;
+	}
+	while(fscanf(file_r, "%lf", &x) == 1){
+		if(n >= N){
+			printf("array pieno\n");
+			fclose(file_r);
+			return -1;		
+		}
+		v[n] = x;
+		n++;
+	}
+	for(int i = 0; i < n; i++){
+		printf("%lf\n", v[i]);
+	}
+	fclose(file_r);
+
+
+	return 0;
+
+}
+*/
+//es 8  leggere il contenuto di un array da file con allocazione dinamica della memoria per l'array
+#define N 100
+int main(int argc, char *argv[]){
+	
+	FILE * file_r;
+	int n = 0;
+	double *v, x;
+	if(argc < 2){
+		fprintf(stderr, "inserire nome del file\n");
+		return -1;
+	}
+	file_r = fopen(argv[1], "r");
+	if (file_r == NULL){
+		fprintf(stderr, "errore apertura file\n");
+		return -1;
+	}
+	while(fscanf(file_r, "%lf", &x) == 1){
+		if(n >= N){
+			printf("array pieno\n");
+			fclose(file_r);
+			return -1;		
+		}
+		n++;
+	}
+	v = malloc(n*sizeof(double));
+	if (v == NULL){
+		fprintf(stderr, "errore allocazione memoria\n");
+		fclose(file_r);
+		return -1;
+	
+	}
+	rewind(file_r);
+	n = 0;
+	while(fscanf(file_r, "%lf", &x) == 1){
+		v[n] = x;
+		n++;
+	}
+	for(int i = 0; i < n; i++){
+		printf("%.2lf\n", v[i]);
+	}
+	fclose(file_r);
+	free(v);
+
+
+	return 0;
 
 }
