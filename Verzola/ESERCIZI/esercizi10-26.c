@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 //es1 bubble sort con allocazione dinamica
 /*
@@ -148,6 +149,7 @@ int main(){
 }
 */
 //es3 ordinamento bubble sort con menu, e riallocazione dinamica della memoria
+/*
 int inserisci_valori(double **v){
 	int n;
 	printf("Quanti numeri vuoi inserire: \n");
@@ -266,4 +268,98 @@ int main(){
 
 } while (scelta != 5);
 	return 0;
+}
+*/
+
+//es 4 unire e dividere due array con allocazione dinamica
+/*
+#define N 100
+int merge_array(int **s, int *v, int *n, int n1, int n2, int *dimensione){
+	*dimensione = n1 + n2;
+	*s = malloc(*dimensione * sizeof(int));
+	if (*s == NULL){
+		printf("errore allocazione memoria\n");		
+		return -1;	
+		}
+	for (int i = 0; i < n1; i++) {
+	    (*s)[i] = v[i];
+	}
+	for (int i = n1; i < *dimensione; i++) {
+	    (*s)[i] = n[i-n1];
+	}
+	
+	for(int i = 0; i < *dimensione; i++){
+        printf("%d ",(*s)[i]);
+
+    }
+	printf("\n");
+	return 0;
+}
+int main(){
+	int v[N];
+	int n[N]; // non serve malloc, perche devo assegnarli staticamente con una costante attraverso DEFINE
+	int *s;
+	int n1, n2, NUM;
+	int dimensione;
+	printf("Quanti numeri vuoi inserire per il primo array: \n");
+	scanf("%d", &NUM);
+	n1 = NUM;
+	for (int i = 0; i < NUM; i++){
+		printf("Inserisci un numero: ");
+		scanf("%d", &v[i]);
+	}
+	if (NUM < 0 || NUM > N) {
+    	printf("Dimensione non valida\n");
+    	return -1;
+	}
+	printf("Quanti numeri vuoi inserire per il secondo array: \n");
+	scanf("%d", &NUM);
+	n2 = NUM;
+	for (int i = 0; i < NUM; i++){
+		printf("Inserisci un numero: ");
+		scanf("%d", &n[i]);
+	}
+	if (NUM < 0 || NUM > N) {
+    	printf("Dimensione non valida\n");
+    	return -1;
+	}
+	
+	merge_array(&s, v, n, n1, n2, &dimensione);
+	free(s);
+
+	return 0;
+}
+*/
+//es5 leggere una frase e creare una struttura dati per contenerla.
+#define N 20
+int main(){
+	char *c[N];
+	char parola[100];
+	int n;
+	printf("Quante parole vuoi inserire: \n");
+	scanf("%d", &n);
+	if (n < 0 || n > N){
+		printf("Numero non valido\n");
+		return -1;	
+	}
+
+	getchar();
+	for(int i = 0; i < n; i++){
+		printf("inserisci parola: ");
+		fgets(parola, sizeof(parola), stdin);
+		parola[strcspn(parola, "\n")] = '\0';
+		size_t len = strlen(parola);
+		c[i] = malloc((len + 1) * sizeof(char));
+		strcpy(c[i], parola);
+	}
+	for(int i = 0; i < n; i++){
+		printf("%s ", c[i]);
+	}
+	printf("\n");
+	for(int i = 0; i < n; i++){
+		free(c[i]);
+	}
+	return 0;
+
+
 }
